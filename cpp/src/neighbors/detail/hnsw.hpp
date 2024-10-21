@@ -114,7 +114,7 @@ template <typename T>
 void get_search_knn_results(hnswlib::HierarchicalNSW<typename hnsw_dist_t<T>::type> const* idx,
                             const T* query,
                             int k,
-                            uint64_t* indices,
+                            int64_t* indices,
                             float* distances)
 {
   auto result = idx->searchKnn(query, k);
@@ -132,7 +132,7 @@ void search(raft::resources const& res,
             const search_params& params,
             const index<T>& idx,
             raft::host_matrix_view<const T, int64_t, raft::row_major> queries,
-            raft::host_matrix_view<uint64_t, int64_t, raft::row_major> neighbors,
+            raft::host_matrix_view<int64_t, int64_t, raft::row_major> neighbors,
             raft::host_matrix_view<float, int64_t, raft::row_major> distances)
 {
   RAFT_EXPECTS(

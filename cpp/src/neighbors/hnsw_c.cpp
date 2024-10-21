@@ -47,7 +47,7 @@ void _search(cuvsResources_t res,
   search_params.num_threads = params.numThreads;
 
   using queries_mdspan_type   = raft::host_matrix_view<T const, int64_t, raft::row_major>;
-  using neighbors_mdspan_type = raft::host_matrix_view<uint64_t, int64_t, raft::row_major>;
+  using neighbors_mdspan_type = raft::host_matrix_view<int64_t, int64_t, raft::row_major>;
   using distances_mdspan_type = raft::host_matrix_view<float, int64_t, raft::row_major>;
   auto queries_mds            = cuvs::core::from_dlpack<queries_mdspan_type>(queries_tensor);
   auto neighbors_mds          = cuvs::core::from_dlpack<neighbors_mdspan_type>(neighbors_tensor);
